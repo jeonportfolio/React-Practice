@@ -1,6 +1,10 @@
 import Container from "./container"
 import Destination from "./Destination"
+import Fruits from "./Fruits"
 import Greeting from "./Greeting"
+import Item from "./Item"
+import List, { FilteredList } from "./List"
+import Mailbox from "./Mailbox"
 
 function HelloWorld() {
   return (
@@ -22,6 +26,8 @@ function Write() {
 
 function App() {
 
+    const fruits = ["Apple"];
+
     const destinations = [
       {
         place: "파리",
@@ -36,8 +42,13 @@ function App() {
         <Destination {...destinations[0]}/>
         <Destination/>
         <HelloWorld/>
+        <Item isDone={true}/>
         <Message/>
         <Write/>
+        <Mailbox unreadMessage={["hi"]}/>
+        {fruits.length > 0 && <Fruits fruits={fruits}/>}
+        <List/>
+        <FilteredList/>
       </div>
     )
 }
