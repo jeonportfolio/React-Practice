@@ -1,10 +1,31 @@
+import { useState } from "react"
+import Alert from "./Alert"
 import Container from "./container"
 import Destination from "./Destination"
+import Form from "./Form"
 import Fruits from "./Fruits"
 import Greeting from "./Greeting"
 import Item from "./Item"
 import List, { FilteredList } from "./List"
 import Mailbox from "./Mailbox"
+import Propagation from "./Propagation"
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return(
+    <div>
+        state: {count}
+        <button onClick={ () => {
+             setCount(pre => pre + 1); 
+             setCount(pre => pre + 1); 
+             setCount(pre => pre + 1); 
+        }}>
+            Update
+        </button>
+    </div>
+  )   
+} 
+
 
 function HelloWorld() {
   return (
@@ -26,6 +47,8 @@ function Write() {
 
 function App() {
 
+    const [count, setCount] = useState(0);
+
     const fruits = ["Apple"];
 
     const destinations = [
@@ -35,9 +58,17 @@ function App() {
       }
     ]
 
+    const handleUpdate = () => {
+        setCount(count + 1);
+    }
+
     return (
       <div>
+        <Counter/>
+        State: {count}
+        <button onClick={handleUpdate}>Update</button>
         <Container>여행지역</Container>
+        
         <Greeting name={"WEWE"}/>
         <Destination {...destinations[0]}/>
         <Destination/>
@@ -49,6 +80,9 @@ function App() {
         {fruits.length > 0 && <Fruits fruits={fruits}/>}
         <List/>
         <FilteredList/>
+        <Alert onAlert={() => alert('hello')}/>
+        <Form/>
+        <Propagation/>
       </div>
     )
 }
